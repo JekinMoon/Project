@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_25b1b207ff7344e1a433c5253001d0c2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+     <div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 220px; height: 160px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white; opacity: 0.8;
+     padding: 10px; border-radius: 10px;">
+     <b>에너지 그룹별 전략</b><br>
+     <i class="fa fa-bolt" style="color:orange"></i> 도시형 에너지 자립<br>
+     <i class="fa fa-tint" style="color:blue"></i> 해안·산단 하이브리드<br>
+     <i class="fa fa-leaf" style="color:green"></i> 영농·내륙 복합<br>
+     <i class="fa fa-cloud" style="color:purple"></i> 청정 에너지 거점<br>
+     </div>
+     
+    
+            <div class="folium-map" id="map_25b1b207ff7344e1a433c5253001d0c2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_25b1b207ff7344e1a433c5253001d0c2 = L.map(
+                "map_25b1b207ff7344e1a433c5253001d0c2",
+                {
+                    center: [36.3, 127.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_05467b76cfb80792ef7938dafde134e8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_05467b76cfb80792ef7938dafde134e8.addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var marker_21ebf64f966ae6dc099c80abe5e4763d = L.marker(
+                [37.5665, 126.978],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_8643953e95d5693a68117f55ee847504 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_40630999f53bda04b6d7fdfe416ebc9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5cbb35615e17e9e0bdff018a9985198 = $(`<div id="html_a5cbb35615e17e9e0bdff018a9985198" style="width: 100.0%; height: 100.0%;"><b>서울</b><br><b>태양광 + BEMS</b><br>건물 BIPV 및 VPP 모델 구축</div>`)[0];
+                popup_40630999f53bda04b6d7fdfe416ebc9f.setContent(html_a5cbb35615e17e9e0bdff018a9985198);
+            
+        
+
+        marker_21ebf64f966ae6dc099c80abe5e4763d.bindPopup(popup_40630999f53bda04b6d7fdfe416ebc9f)
+        ;
+
+        
+    
+    
+            marker_21ebf64f966ae6dc099c80abe5e4763d.bindTooltip(
+                `<div>
+                     서울 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_21ebf64f966ae6dc099c80abe5e4763d.setIcon(icon_8643953e95d5693a68117f55ee847504);
+            
+    
+            var marker_acdf85fe3db31a6b9fa9960b1d1a8aad = L.marker(
+                [36.48, 127.289],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_7a53250a38544483ffdb7d5de5010d95 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1abdc8d20fd107cc8c03eabc099e248a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a0054c5de1738cc898e4d0d3a4b75390 = $(`<div id="html_a0054c5de1738cc898e4d0d3a4b75390" style="width: 100.0%; height: 100.0%;"><b>세종</b><br><b>태양광 + EV 충전</b><br>주차장 태양광과 전기차 충전소 직결</div>`)[0];
+                popup_1abdc8d20fd107cc8c03eabc099e248a.setContent(html_a0054c5de1738cc898e4d0d3a4b75390);
+            
+        
+
+        marker_acdf85fe3db31a6b9fa9960b1d1a8aad.bindPopup(popup_1abdc8d20fd107cc8c03eabc099e248a)
+        ;
+
+        
+    
+    
+            marker_acdf85fe3db31a6b9fa9960b1d1a8aad.bindTooltip(
+                `<div>
+                     세종 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_acdf85fe3db31a6b9fa9960b1d1a8aad.setIcon(icon_7a53250a38544483ffdb7d5de5010d95);
+            
+    
+            var marker_f94acfb686e212780131b2b995270022 = L.marker(
+                [36.3504, 127.3845],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_3b04890e29c47be1a4a35c5da1ac841b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d24baedac8b0f5db9376b15add4b108a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ca360a61e960ebd5a67151e108a74f0a = $(`<div id="html_ca360a61e960ebd5a67151e108a74f0a" style="width: 100.0%; height: 100.0%;"><b>대전</b><br><b>태양광 + EV 충전</b><br>공공기관 지붕 활용 및 송전손실 최소화</div>`)[0];
+                popup_d24baedac8b0f5db9376b15add4b108a.setContent(html_ca360a61e960ebd5a67151e108a74f0a);
+            
+        
+
+        marker_f94acfb686e212780131b2b995270022.bindPopup(popup_d24baedac8b0f5db9376b15add4b108a)
+        ;
+
+        
+    
+    
+            marker_f94acfb686e212780131b2b995270022.bindTooltip(
+                `<div>
+                     대전 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f94acfb686e212780131b2b995270022.setIcon(icon_3b04890e29c47be1a4a35c5da1ac841b);
+            
+    
+            var marker_9d9fe79ec3d385330b80599c68a0e008 = L.marker(
+                [35.8714, 128.6014],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_9f19c1e6bb4ca497fbe52d5bcfc78468 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd40c1b26265250b0f3dfe8127fc871b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3a9e431791e17af2b15b80d912749a79 = $(`<div id="html_3a9e431791e17af2b15b80d912749a79" style="width: 100.0%; height: 100.0%;"><b>대구</b><br><b>고효율 태양광 + ESS</b><br>커뮤니티 에너지 저장 및 피크 대응</div>`)[0];
+                popup_fd40c1b26265250b0f3dfe8127fc871b.setContent(html_3a9e431791e17af2b15b80d912749a79);
+            
+        
+
+        marker_9d9fe79ec3d385330b80599c68a0e008.bindPopup(popup_fd40c1b26265250b0f3dfe8127fc871b)
+        ;
+
+        
+    
+    
+            marker_9d9fe79ec3d385330b80599c68a0e008.bindTooltip(
+                `<div>
+                     대구 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d9fe79ec3d385330b80599c68a0e008.setIcon(icon_9f19c1e6bb4ca497fbe52d5bcfc78468);
+            
+    
+            var marker_cdfd6e6f921d1cd10c215842ef57f6f2 = L.marker(
+                [35.1595, 126.8526],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_2560001d9c4d73fc98050ca2fc3b8d8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a036b5ef2b3797b863ff036c6ed2e16a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f20ed6d7962ddf625226e62fa27e13eb = $(`<div id="html_f20ed6d7962ddf625226e62fa27e13eb" style="width: 100.0%; height: 100.0%;"><b>광주</b><br><b>고효율 태양광 + ESS</b><br>낮 시간 저장 후 저녁 시간 방출 최적화</div>`)[0];
+                popup_a036b5ef2b3797b863ff036c6ed2e16a.setContent(html_f20ed6d7962ddf625226e62fa27e13eb);
+            
+        
+
+        marker_cdfd6e6f921d1cd10c215842ef57f6f2.bindPopup(popup_a036b5ef2b3797b863ff036c6ed2e16a)
+        ;
+
+        
+    
+    
+            marker_cdfd6e6f921d1cd10c215842ef57f6f2.bindTooltip(
+                `<div>
+                     광주 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cdfd6e6f921d1cd10c215842ef57f6f2.setIcon(icon_2560001d9c4d73fc98050ca2fc3b8d8e);
+            
+    
+            var marker_03d01829ce135231f6009f73dd42782a = L.marker(
+                [35.5384, 129.3114],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_301e5d353c78e1fa265d4f0682c30c79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1dc30d44eadad03d33a2ef19c5d336e2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c0fc1358367da0854c2c691afd1115b4 = $(`<div id="html_c0fc1358367da0854c2c691afd1115b4" style="width: 100.0%; height: 100.0%;"><b>울산</b><br><b>부유식 해상풍력 + 그린수소</b><br>해풍 활용 및 산단 수소 트럭 연계</div>`)[0];
+                popup_1dc30d44eadad03d33a2ef19c5d336e2.setContent(html_c0fc1358367da0854c2c691afd1115b4);
+            
+        
+
+        marker_03d01829ce135231f6009f73dd42782a.bindPopup(popup_1dc30d44eadad03d33a2ef19c5d336e2)
+        ;
+
+        
+    
+    
+            marker_03d01829ce135231f6009f73dd42782a.bindTooltip(
+                `<div>
+                     울산 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03d01829ce135231f6009f73dd42782a.setIcon(icon_301e5d353c78e1fa265d4f0682c30c79);
+            
+    
+            var marker_f962b63bf26467eea133089d824c4236 = L.marker(
+                [37.4563, 126.7052],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_78e4777a3cfa46aeb0fc921e872e4480 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b0da9add9ccf80db3f5c92123019e24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_30b52a276a1fa591a315fd0edb0317d6 = $(`<div id="html_30b52a276a1fa591a315fd0edb0317d6" style="width: 100.0%; height: 100.0%;"><b>인천</b><br><b>해상 태양광 + 항만 풍력</b><br>유휴 해수면 활용 및 염해 강화 모듈</div>`)[0];
+                popup_1b0da9add9ccf80db3f5c92123019e24.setContent(html_30b52a276a1fa591a315fd0edb0317d6);
+            
+        
+
+        marker_f962b63bf26467eea133089d824c4236.bindPopup(popup_1b0da9add9ccf80db3f5c92123019e24)
+        ;
+
+        
+    
+    
+            marker_f962b63bf26467eea133089d824c4236.bindTooltip(
+                `<div>
+                     인천 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f962b63bf26467eea133089d824c4236.setIcon(icon_78e4777a3cfa46aeb0fc921e872e4480);
+            
+    
+            var marker_8112799f623074f199a7ba2d94ecf50e = L.marker(
+                [35.1796, 129.0756],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_e3dff5f3b1083dcd1c300e3eca295fc0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_701f4f6fa30e8f5e0d480f08c00de9cf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_488675b6ccd24992d9695272fff44329 = $(`<div id="html_488675b6ccd24992d9695272fff44329" style="width: 100.0%; height: 100.0%;"><b>부산</b><br><b>해상 태양광 + 항만 풍력</b><br>항만 배후 부지 풍력 조합</div>`)[0];
+                popup_701f4f6fa30e8f5e0d480f08c00de9cf.setContent(html_488675b6ccd24992d9695272fff44329);
+            
+        
+
+        marker_8112799f623074f199a7ba2d94ecf50e.bindPopup(popup_701f4f6fa30e8f5e0d480f08c00de9cf)
+        ;
+
+        
+    
+    
+            marker_8112799f623074f199a7ba2d94ecf50e.bindTooltip(
+                `<div>
+                     부산 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8112799f623074f199a7ba2d94ecf50e.setIcon(icon_e3dff5f3b1083dcd1c300e3eca295fc0);
+            
+    
+            var marker_1497002a2e82365b3ef4bf9976a33061 = L.marker(
+                [35.2377, 128.6922],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_ea799456e8b6d43d2786c61032d5318f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_83f6232af97bf637b3c96cb1f1ec737c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31e845e6f5501857f843ce92d2cb72e6 = $(`<div id="html_31e845e6f5501857f843ce92d2cb72e6" style="width: 100.0%; height: 100.0%;"><b>경남</b><br><b>산단 지붕 태양광 + 수소 연료전지</b><br>공장 24시간 안정적 전력 공급</div>`)[0];
+                popup_83f6232af97bf637b3c96cb1f1ec737c.setContent(html_31e845e6f5501857f843ce92d2cb72e6);
+            
+        
+
+        marker_1497002a2e82365b3ef4bf9976a33061.bindPopup(popup_83f6232af97bf637b3c96cb1f1ec737c)
+        ;
+
+        
+    
+    
+            marker_1497002a2e82365b3ef4bf9976a33061.bindTooltip(
+                `<div>
+                     경남 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1497002a2e82365b3ef4bf9976a33061.setIcon(icon_ea799456e8b6d43d2786c61032d5318f);
+            
+    
+            var marker_0657a57c2e1df79dac0dd0d676810e71 = L.marker(
+                [35.8242, 127.148],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_aca1b5af6e49aee8164f10d7a962b600 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9bf34582fcf47432bce6aeab0e9bacdd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e40158ed85beb6cc26ec359ec5e9de3 = $(`<div id="html_3e40158ed85beb6cc26ec359ec5e9de3" style="width: 100.0%; height: 100.0%;"><b>전북</b><br><b>영농형 태양광(Agri-PV)</b><br>작물 재배-전력 생산 병행 모델</div>`)[0];
+                popup_9bf34582fcf47432bce6aeab0e9bacdd.setContent(html_3e40158ed85beb6cc26ec359ec5e9de3);
+            
+        
+
+        marker_0657a57c2e1df79dac0dd0d676810e71.bindPopup(popup_9bf34582fcf47432bce6aeab0e9bacdd)
+        ;
+
+        
+    
+    
+            marker_0657a57c2e1df79dac0dd0d676810e71.bindTooltip(
+                `<div>
+                     전북 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0657a57c2e1df79dac0dd0d676810e71.setIcon(icon_aca1b5af6e49aee8164f10d7a962b600);
+            
+    
+            var marker_6accf708fb18df649f82ef0e788cc70d = L.marker(
+                [36.6588, 126.6728],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_4e829fed11c39c37ce9d9adce83926b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_208f0cb13dd44430f90969679f0ea96e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d68d719e97431dbee1698c47aaff37a5 = $(`<div id="html_d68d719e97431dbee1698c47aaff37a5" style="width: 100.0%; height: 100.0%;"><b>충남</b><br><b>영농형 태양광 + 산단 확충</b><br>미세먼지 대비 보조 전원 확보</div>`)[0];
+                popup_208f0cb13dd44430f90969679f0ea96e.setContent(html_d68d719e97431dbee1698c47aaff37a5);
+            
+        
+
+        marker_6accf708fb18df649f82ef0e788cc70d.bindPopup(popup_208f0cb13dd44430f90969679f0ea96e)
+        ;
+
+        
+    
+    
+            marker_6accf708fb18df649f82ef0e788cc70d.bindTooltip(
+                `<div>
+                     충남 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6accf708fb18df649f82ef0e788cc70d.setIcon(icon_4e829fed11c39c37ce9d9adce83926b4);
+            
+    
+            var marker_54ee8f2cc803de2201f5ed1a48661bb0 = L.marker(
+                [34.8161, 126.4629],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_f9ec4062039927e16a1b4ccaa55500c6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d66d0a3fcbbc9909f04d9b5ec6f99fb3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83a01f67eddc0e3f856f7940cbae838a = $(`<div id="html_83a01f67eddc0e3f856f7940cbae838a" style="width: 100.0%; height: 100.0%;"><b>전남</b><br><b>염전/수상 태양광 + 해상 풍력</b><br>거대 에너지 섬 클러스터 구축</div>`)[0];
+                popup_d66d0a3fcbbc9909f04d9b5ec6f99fb3.setContent(html_83a01f67eddc0e3f856f7940cbae838a);
+            
+        
+
+        marker_54ee8f2cc803de2201f5ed1a48661bb0.bindPopup(popup_d66d0a3fcbbc9909f04d9b5ec6f99fb3)
+        ;
+
+        
+    
+    
+            marker_54ee8f2cc803de2201f5ed1a48661bb0.bindTooltip(
+                `<div>
+                     전남 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_54ee8f2cc803de2201f5ed1a48661bb0.setIcon(icon_f9ec4062039927e16a1b4ccaa55500c6);
+            
+    
+            var marker_947a1b73477cea8987c33c6cded76757 = L.marker(
+                [36.635, 127.4912],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_9e525fdca5caef04b7fa96dd6c038859 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2b2b774366516db53fbbccdf24e72645 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e06f70c16ade66855acf3cd544301848 = $(`<div id="html_e06f70c16ade66855acf3cd544301848" style="width: 100.0%; height: 100.0%;"><b>충북</b><br><b>내륙 태양광 + 소수력/바이오</b><br>축산 분뇨 바이오 가스 연계</div>`)[0];
+                popup_2b2b774366516db53fbbccdf24e72645.setContent(html_e06f70c16ade66855acf3cd544301848);
+            
+        
+
+        marker_947a1b73477cea8987c33c6cded76757.bindPopup(popup_2b2b774366516db53fbbccdf24e72645)
+        ;
+
+        
+    
+    
+            marker_947a1b73477cea8987c33c6cded76757.bindTooltip(
+                `<div>
+                     충북 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_947a1b73477cea8987c33c6cded76757.setIcon(icon_9e525fdca5caef04b7fa96dd6c038859);
+            
+    
+            var marker_3060d978d59c9e9a1b37e33c9659d831 = L.marker(
+                [36.576, 128.5056],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_80ca5e184eb9fe0b7b3b9e58f4df0f34 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b346ebe82e3fa4948696a00cdb47631d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a55e9a772a24069b448fee83756f6213 = $(`<div id="html_a55e9a772a24069b448fee83756f6213" style="width: 100.0%; height: 100.0%;"><b>경북</b><br><b>내륙 태양광 + 바이오 가스</b><br>기상 변동성 보완형 믹스</div>`)[0];
+                popup_b346ebe82e3fa4948696a00cdb47631d.setContent(html_a55e9a772a24069b448fee83756f6213);
+            
+        
+
+        marker_3060d978d59c9e9a1b37e33c9659d831.bindPopup(popup_b346ebe82e3fa4948696a00cdb47631d)
+        ;
+
+        
+    
+    
+            marker_3060d978d59c9e9a1b37e33c9659d831.bindTooltip(
+                `<div>
+                     경북 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3060d978d59c9e9a1b37e33c9659d831.setIcon(icon_80ca5e184eb9fe0b7b3b9e58f4df0f34);
+            
+    
+            var marker_bbed4951af2bf8cd4d1a5127c6973b8a = L.marker(
+                [37.2751, 127.0096],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_ef32b8f35000cf39d1bb67b5f54ef63d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d2cdac64b456970b123985915254c5b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_38027bbb28731b31aaad7c2c3e0fbe71 = $(`<div id="html_38027bbb28731b31aaad7c2c3e0fbe71" style="width: 100.0%; height: 100.0%;"><b>경기</b><br><b>옥상 태양광 + 스마트 그리드</b><br>산단 및 인구 밀집지 효율 관리</div>`)[0];
+                popup_0d2cdac64b456970b123985915254c5b.setContent(html_38027bbb28731b31aaad7c2c3e0fbe71);
+            
+        
+
+        marker_bbed4951af2bf8cd4d1a5127c6973b8a.bindPopup(popup_0d2cdac64b456970b123985915254c5b)
+        ;
+
+        
+    
+    
+            marker_bbed4951af2bf8cd4d1a5127c6973b8a.bindTooltip(
+                `<div>
+                     경기 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bbed4951af2bf8cd4d1a5127c6973b8a.setIcon(icon_ef32b8f35000cf39d1bb67b5f54ef63d);
+            
+    
+            var marker_049b607d573387de0bc12a8bea518bc9 = L.marker(
+                [33.4996, 126.5312],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_14787cd37c6c5551078d744cc2bb4598 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6871b1bd0a13e14677dd3faf98d3d69 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffed2bc7b32b56f3ad27436a2435172e = $(`<div id="html_ffed2bc7b32b56f3ad27436a2435172e" style="width: 100.0%; height: 100.0%;"><b>제주</b><br><b>풍력(주) + 수소 버스</b><br>출력 제한 해소를 위한 P2G 모델</div>`)[0];
+                popup_d6871b1bd0a13e14677dd3faf98d3d69.setContent(html_ffed2bc7b32b56f3ad27436a2435172e);
+            
+        
+
+        marker_049b607d573387de0bc12a8bea518bc9.bindPopup(popup_d6871b1bd0a13e14677dd3faf98d3d69)
+        ;
+
+        
+    
+    
+            marker_049b607d573387de0bc12a8bea518bc9.bindTooltip(
+                `<div>
+                     제주 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_049b607d573387de0bc12a8bea518bc9.setIcon(icon_14787cd37c6c5551078d744cc2bb4598);
+            
+    
+            var marker_c5dfd9a6823479029881e50e5a57bd48 = L.marker(
+                [37.8854, 127.7298],
+                {
+}
+            ).addTo(map_25b1b207ff7344e1a433c5253001d0c2);
+        
+    
+            var icon_3466d13a0befe4bd56081e60cbdc2ad8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fc869e1e34e7d8362eb43f3c75ade2e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c35f8039a74f8a726fc3f42b9980a948 = $(`<div id="html_c35f8039a74f8a726fc3f42b9980a948" style="width: 100.0%; height: 100.0%;"><b>강원</b><br><b>육상 풍력 + 수상 태양광</b><br>산바람-댐 태양광 상호보완</div>`)[0];
+                popup_fc869e1e34e7d8362eb43f3c75ade2e4.setContent(html_c35f8039a74f8a726fc3f42b9980a948);
+            
+        
+
+        marker_c5dfd9a6823479029881e50e5a57bd48.bindPopup(popup_fc869e1e34e7d8362eb43f3c75ade2e4)
+        ;
+
+        
+    
+    
+            marker_c5dfd9a6823479029881e50e5a57bd48.bindTooltip(
+                `<div>
+                     강원 전략
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c5dfd9a6823479029881e50e5a57bd48.setIcon(icon_3466d13a0befe4bd56081e60cbdc2ad8);
+            
+</script>
+</html>

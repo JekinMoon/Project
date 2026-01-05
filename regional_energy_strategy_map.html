@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f197534b4a422056221975325531d4ef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 300px; height: auto; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; border-radius: 5px; padding: 10px">
+<h4 style="margin:0 0 10px 0">하이브리드 에너지 전략 그룹</h4>
+<p><i class="fa fa-bolt" style="color:orange"></i> 도시형 에너지 자립</p>
+<p><i class="fa fa-tint" style="color:blue"></i> 해안·산단 하이브리드</p>
+<p><i class="fa fa-leaf" style="color:green"></i> 영농·내륙 복합</p>
+<p><i class="fa fa-cloud" style="color:purple"></i> 청정 에너지 거점</p>
+<hr>
+<p><i class="fa fa-circle" style="color:red"></i> ⚠️ 긴급 대응 필요 (급감 지역)</p>
+</div>
+    
+            <div class="folium-map" id="map_f197534b4a422056221975325531d4ef" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f197534b4a422056221975325531d4ef = L.map(
+                "map_f197534b4a422056221975325531d4ef",
+                {
+                    center: [36.5, 127.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1e59221912529430ec67fa1046fac8c4 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1e59221912529430ec67fa1046fac8c4.addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var marker_943b2f0d87508a33444513c209a7883d = L.marker(
+                [37.5665, 126.978],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_e59344c7bdfa18ec1fbea7e936248203 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1677bfc589366e6594594775650c0ad5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e14d8dca2bd819bbce18be4d2d9dedd1 = $(`<div id="html_e14d8dca2bd819bbce18be4d2d9dedd1" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">서울</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 도시형 에너지 자립</p>         <hr style="margin:10px 0">         <b>건물 통합 태양광(BIPV) + VPP</b><br>빌딩 외벽/지붕 태양광과 가상발전소로 피크 대응         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 53.0 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 29,061 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -11.9%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_1677bfc589366e6594594775650c0ad5.setContent(html_e14d8dca2bd819bbce18be4d2d9dedd1);
+            
+        
+
+        marker_943b2f0d87508a33444513c209a7883d.bindPopup(popup_1677bfc589366e6594594775650c0ad5)
+        ;
+
+        
+    
+    
+            marker_943b2f0d87508a33444513c209a7883d.bindTooltip(
+                `<div>
+                     서울 - 53.0 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_943b2f0d87508a33444513c209a7883d.setIcon(icon_e59344c7bdfa18ec1fbea7e936248203);
+            
+    
+            var marker_f314a183a04092e66c5e16f46d4196dd = L.marker(
+                [36.48, 127.289],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_32dd8676a1e57e1dfbd933fe8c420f61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87ff0abea55c35a65ed766be87a06bd4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e94fb828b8348a33f4395c6ccd2614b = $(`<div id="html_8e94fb828b8348a33f4395c6ccd2614b" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">세종</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 도시형 에너지 자립</p>         <hr style="margin:10px 0">         <b>스마트시티 태양광 + V2G</b><br>공공건물 태양광과 전기차 양방향 충전         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 1.5 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 841 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -8.6%</p>              </div>     </div>`)[0];
+                popup_87ff0abea55c35a65ed766be87a06bd4.setContent(html_8e94fb828b8348a33f4395c6ccd2614b);
+            
+        
+
+        marker_f314a183a04092e66c5e16f46d4196dd.bindPopup(popup_87ff0abea55c35a65ed766be87a06bd4)
+        ;
+
+        
+    
+    
+            marker_f314a183a04092e66c5e16f46d4196dd.bindTooltip(
+                `<div>
+                     세종 - 1.5 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f314a183a04092e66c5e16f46d4196dd.setIcon(icon_32dd8676a1e57e1dfbd933fe8c420f61);
+            
+    
+            var marker_05019f5b208afe0514c50201e4be6d03 = L.marker(
+                [36.3504, 127.3845],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_aa50b0789d9284e3514440b18229a230 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e2a3d377a4afe035792c5b1d6080b411 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0859f9b28aedd024a139103c43281d49 = $(`<div id="html_0859f9b28aedd024a139103c43281d49" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">대전</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 도시형 에너지 자립</p>         <hr style="margin:10px 0">         <b>연구단지 태양광 + 마이크로그리드</b><br>대덕연구단지 분산형 에너지 실증         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 9.7 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 5,310 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -11.9%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_e2a3d377a4afe035792c5b1d6080b411.setContent(html_0859f9b28aedd024a139103c43281d49);
+            
+        
+
+        marker_05019f5b208afe0514c50201e4be6d03.bindPopup(popup_e2a3d377a4afe035792c5b1d6080b411)
+        ;
+
+        
+    
+    
+            marker_05019f5b208afe0514c50201e4be6d03.bindTooltip(
+                `<div>
+                     대전 - 9.7 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_05019f5b208afe0514c50201e4be6d03.setIcon(icon_aa50b0789d9284e3514440b18229a230);
+            
+    
+            var marker_080a5e38c0b60e50e6fb65d12c092290 = L.marker(
+                [35.8714, 128.6014],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_b50a9999f7db85aea677587088001e10 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1fc75d1435fc7d9cb21f43e6775fbb30 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4572ac1e5b1ae536842ba99ac7f8f35a = $(`<div id="html_4572ac1e5b1ae536842ba99ac7f8f35a" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">대구</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 도시형 에너지 자립</p>         <hr style="margin:10px 0">         <b>일조량 최적화 태양광 + ESS</b><br>높은 일사량 활용, 여름 피크 집중 대응         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 14.8 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 8,103 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -13.4%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_1fc75d1435fc7d9cb21f43e6775fbb30.setContent(html_4572ac1e5b1ae536842ba99ac7f8f35a);
+            
+        
+
+        marker_080a5e38c0b60e50e6fb65d12c092290.bindPopup(popup_1fc75d1435fc7d9cb21f43e6775fbb30)
+        ;
+
+        
+    
+    
+            marker_080a5e38c0b60e50e6fb65d12c092290.bindTooltip(
+                `<div>
+                     대구 - 14.8 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_080a5e38c0b60e50e6fb65d12c092290.setIcon(icon_b50a9999f7db85aea677587088001e10);
+            
+    
+            var marker_6c42bde3bf1bf315a7a8d27c4338b40d = L.marker(
+                [35.1595, 126.8526],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_d3cf3e64bcf6dcfe965f09cf8a600b3b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bbde19d5357a78356f43a99a7f4c20f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3df79d74a1c5c8baa7d7e7a6e51dc9cc = $(`<div id="html_3df79d74a1c5c8baa7d7e7a6e51dc9cc" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">광주</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 도시형 에너지 자립</p>         <hr style="margin:10px 0">         <b>태양광 R&D 클러스터 + ESS</b><br>국가 태양광 산업단지 실증 및 상용화         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 8.8 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 4,800 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -12.9%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_bbde19d5357a78356f43a99a7f4c20f9.setContent(html_3df79d74a1c5c8baa7d7e7a6e51dc9cc);
+            
+        
+
+        marker_6c42bde3bf1bf315a7a8d27c4338b40d.bindPopup(popup_bbde19d5357a78356f43a99a7f4c20f9)
+        ;
+
+        
+    
+    
+            marker_6c42bde3bf1bf315a7a8d27c4338b40d.bindTooltip(
+                `<div>
+                     광주 - 8.8 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6c42bde3bf1bf315a7a8d27c4338b40d.setIcon(icon_d3cf3e64bcf6dcfe965f09cf8a600b3b);
+            
+    
+            var marker_3fa1331baffe43a95954429cadd4b448 = L.marker(
+                [35.5384, 129.3114],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_c09ef4ecada939c4253c4fa4d4ec0c81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e3d7a76ab13a33566dda06a74310a426 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b792ace92b7d12a06029ad01c1ff64a = $(`<div id="html_4b792ace92b7d12a06029ad01c1ff64a" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">울산</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 해안·산단 하이브리드</p>         <hr style="margin:10px 0">         <b>⚠️ 급감: 부유식 풍력 + 그린수소</b><br>석유화학 대체 에너지 긴급 확보         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 15.0 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 8,245 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -20.2%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_e3d7a76ab13a33566dda06a74310a426.setContent(html_4b792ace92b7d12a06029ad01c1ff64a);
+            
+        
+
+        marker_3fa1331baffe43a95954429cadd4b448.bindPopup(popup_e3d7a76ab13a33566dda06a74310a426)
+        ;
+
+        
+    
+    
+            marker_3fa1331baffe43a95954429cadd4b448.bindTooltip(
+                `<div>
+                     울산 - 15.0 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3fa1331baffe43a95954429cadd4b448.setIcon(icon_c09ef4ecada939c4253c4fa4d4ec0c81);
+            
+    
+            var marker_528ec751266f919427fab927428b466d = L.marker(
+                [37.4563, 126.7052],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_ec45fc169fecfc3593e2f46dc4f617e8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a373cf23094ba0f773f1ca4a9483372 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_380be6722f7181b0121f95d6f1deadf9 = $(`<div id="html_380be6722f7181b0121f95d6f1deadf9" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">인천</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 해안·산단 하이브리드</p>         <hr style="margin:10px 0">         <b>해상풍력 + 항만 태양광</b><br>서해 풍력단지와 물류센터 지붕 태양광         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 22.2 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 12,152 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -14.6%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_8a373cf23094ba0f773f1ca4a9483372.setContent(html_380be6722f7181b0121f95d6f1deadf9);
+            
+        
+
+        marker_528ec751266f919427fab927428b466d.bindPopup(popup_8a373cf23094ba0f773f1ca4a9483372)
+        ;
+
+        
+    
+    
+            marker_528ec751266f919427fab927428b466d.bindTooltip(
+                `<div>
+                     인천 - 22.2 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_528ec751266f919427fab927428b466d.setIcon(icon_ec45fc169fecfc3593e2f46dc4f617e8);
+            
+    
+            var marker_751618479bd85b8854de451f4cbfbd8b = L.marker(
+                [35.1796, 129.0756],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_ffbbbabaf2b680e8514d2595b3a2ebdc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1467f718ab60d9e85e284e0d95178b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dddacad3b00df7da1b83d5129e401c7e = $(`<div id="html_dddacad3b00df7da1b83d5129e401c7e" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">부산</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 해안·산단 하이브리드</p>         <hr style="margin:10px 0">         <b>해상풍력 + 수소항만</b><br>부유식 풍력과 수소선박 연료 공급망         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 20.8 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 11,404 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -13.4%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_e1467f718ab60d9e85e284e0d95178b4.setContent(html_dddacad3b00df7da1b83d5129e401c7e);
+            
+        
+
+        marker_751618479bd85b8854de451f4cbfbd8b.bindPopup(popup_e1467f718ab60d9e85e284e0d95178b4)
+        ;
+
+        
+    
+    
+            marker_751618479bd85b8854de451f4cbfbd8b.bindTooltip(
+                `<div>
+                     부산 - 20.8 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_751618479bd85b8854de451f4cbfbd8b.setIcon(icon_ffbbbabaf2b680e8514d2595b3a2ebdc);
+            
+    
+            var marker_fb6d2ce1fc33490c3265d300da0d184b = L.marker(
+                [35.2377, 128.6922],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_c24a0082b398166628239f01ec1e021d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "tint",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e2c9dfad3875c068af6dfa000e5748b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aeedab6e8bd1fdfc90c44b958f84820f = $(`<div id="html_aeedab6e8bd1fdfc90c44b958f84820f" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">경남</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 해안·산단 하이브리드</p>         <hr style="margin:10px 0">         <b>산단 태양광 + 연료전지</b><br>조선·기계 산업단지 24시간 안정 공급         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 27.0 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 14,780 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -15.6%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_e2c9dfad3875c068af6dfa000e5748b4.setContent(html_aeedab6e8bd1fdfc90c44b958f84820f);
+            
+        
+
+        marker_fb6d2ce1fc33490c3265d300da0d184b.bindPopup(popup_e2c9dfad3875c068af6dfa000e5748b4)
+        ;
+
+        
+    
+    
+            marker_fb6d2ce1fc33490c3265d300da0d184b.bindTooltip(
+                `<div>
+                     경남 - 27.0 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fb6d2ce1fc33490c3265d300da0d184b.setIcon(icon_c24a0082b398166628239f01ec1e021d);
+            
+    
+            var marker_272903e13935b93fe06583c5a19c2119 = L.marker(
+                [35.8242, 127.148],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_c10a0004f1f5a446871dabc6f829c8fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6894160764f38f693e482d2185d9c0c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c0276e87b38819bf265f18a99e6763dc = $(`<div id="html_c0276e87b38819bf265f18a99e6763dc" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">전북</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 영농형 태양광 + 풍력</b><br>새만금 대규모 재생에너지 단지 조속 구축         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 21.1 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 11,583 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -15.3%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_6894160764f38f693e482d2185d9c0c3.setContent(html_c0276e87b38819bf265f18a99e6763dc);
+            
+        
+
+        marker_272903e13935b93fe06583c5a19c2119.bindPopup(popup_6894160764f38f693e482d2185d9c0c3)
+        ;
+
+        
+    
+    
+            marker_272903e13935b93fe06583c5a19c2119.bindTooltip(
+                `<div>
+                     전북 - 21.1 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_272903e13935b93fe06583c5a19c2119.setIcon(icon_c10a0004f1f5a446871dabc6f829c8fc);
+            
+    
+            var marker_d881ce8535aefb2a44b552b3b6a276bc = L.marker(
+                [36.6588, 126.6728],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_dcd48078c8c3bc9ff782eab1e5071997 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_41cec26fdf37d863493c57adfd0d3149 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_06883a412be11763766240a30e42e523 = $(`<div id="html_06883a412be11763766240a30e42e523" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">충남</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 대규모 태양광 + 해상풍력</b><br>석탄발전 축소 대응 긴급 필요         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 32.2 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 17,632 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -15.7%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_41cec26fdf37d863493c57adfd0d3149.setContent(html_06883a412be11763766240a30e42e523);
+            
+        
+
+        marker_d881ce8535aefb2a44b552b3b6a276bc.bindPopup(popup_41cec26fdf37d863493c57adfd0d3149)
+        ;
+
+        
+    
+    
+            marker_d881ce8535aefb2a44b552b3b6a276bc.bindTooltip(
+                `<div>
+                     충남 - 32.2 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d881ce8535aefb2a44b552b3b6a276bc.setIcon(icon_dcd48078c8c3bc9ff782eab1e5071997);
+            
+    
+            var marker_5c849c662cd56212ea33b41bdc7f2fc0 = L.marker(
+                [34.8161, 126.4629],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_12616fe597387c4dd1c070120916c96f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e81a6bf0a350d57336c1fa309e7707cb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dd762fba8bf2ffe5624723e57c930d74 = $(`<div id="html_dd762fba8bf2ffe5624723e57c930d74" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">전남</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 신안 해상풍력 + 수상태양광</b><br>전국 최대 재생에너지 생산기지 구축         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 23.9 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 13,099 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -16.7%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_e81a6bf0a350d57336c1fa309e7707cb.setContent(html_dd762fba8bf2ffe5624723e57c930d74);
+            
+        
+
+        marker_5c849c662cd56212ea33b41bdc7f2fc0.bindPopup(popup_e81a6bf0a350d57336c1fa309e7707cb)
+        ;
+
+        
+    
+    
+            marker_5c849c662cd56212ea33b41bdc7f2fc0.bindTooltip(
+                `<div>
+                     전남 - 23.9 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c849c662cd56212ea33b41bdc7f2fc0.setIcon(icon_12616fe597387c4dd1c070120916c96f);
+            
+    
+            var marker_7376f1a743fd03786ceea2a9e07fe079 = L.marker(
+                [36.635, 127.4912],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_7a14df5db7b6490f54a9094dc843cb14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd09f11915c6f4cfae68ee0830e3761f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8470e530dbe66ef8120c621c1246067 = $(`<div id="html_b8470e530dbe66ef8120c621c1246067" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">충북</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 내륙 태양광 + 바이오</b><br>수요 급감 대응 분산형 전원 최적화         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 18.7 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 10,227 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -23.5%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_cd09f11915c6f4cfae68ee0830e3761f.setContent(html_b8470e530dbe66ef8120c621c1246067);
+            
+        
+
+        marker_7376f1a743fd03786ceea2a9e07fe079.bindPopup(popup_cd09f11915c6f4cfae68ee0830e3761f)
+        ;
+
+        
+    
+    
+            marker_7376f1a743fd03786ceea2a9e07fe079.bindTooltip(
+                `<div>
+                     충북 - 18.7 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7376f1a743fd03786ceea2a9e07fe079.setIcon(icon_7a14df5db7b6490f54a9094dc843cb14);
+            
+    
+            var marker_d9c9a82f22e6bc58e2704a035b57d12f = L.marker(
+                [36.576, 128.5056],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_2d24977de7ed0076ce952254b8174e48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd3c6534124f63ebe567846de4a90077 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fcedd766fbc04fbabf0dde79f4d5f5f7 = $(`<div id="html_fcedd766fbc04fbabf0dde79f4d5f5f7" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">경북</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 태양광 + 소수력 + ESS</b><br>산업 이탈 대비 에너지 전환 가속         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 26.5 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 14,533 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -18.2%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_fd3c6534124f63ebe567846de4a90077.setContent(html_fcedd766fbc04fbabf0dde79f4d5f5f7);
+            
+        
+
+        marker_d9c9a82f22e6bc58e2704a035b57d12f.bindPopup(popup_fd3c6534124f63ebe567846de4a90077)
+        ;
+
+        
+    
+    
+            marker_d9c9a82f22e6bc58e2704a035b57d12f.bindTooltip(
+                `<div>
+                     경북 - 26.5 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d9c9a82f22e6bc58e2704a035b57d12f.setIcon(icon_2d24977de7ed0076ce952254b8174e48);
+            
+    
+            var marker_d388aa19b59adf2ea5180be63b604b8b = L.marker(
+                [37.2751, 127.0096],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_fac122e595261443fe9deeec65483684 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18ea2a09cf268efe26eea99d46686558 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e04c3313e05772179241fd0e712f2224 = $(`<div id="html_e04c3313e05772179241fd0e712f2224" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">경기</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 영농·내륙 복합</p>         <hr style="margin:10px 0">         <b>⚠️ 분산형 태양광 + 스마트그리드</b><br>전국 최대 수요 안정화 긴급 대응         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 117.6 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 64,430 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -13.2%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_18ea2a09cf268efe26eea99d46686558.setContent(html_e04c3313e05772179241fd0e712f2224);
+            
+        
+
+        marker_d388aa19b59adf2ea5180be63b604b8b.bindPopup(popup_18ea2a09cf268efe26eea99d46686558)
+        ;
+
+        
+    
+    
+            marker_d388aa19b59adf2ea5180be63b604b8b.bindTooltip(
+                `<div>
+                     경기 - 117.6 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d388aa19b59adf2ea5180be63b604b8b.setIcon(icon_fac122e595261443fe9deeec65483684);
+            
+    
+            var marker_550762f07b7a9650e28bef0975f30f12 = L.marker(
+                [33.4996, 126.5312],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_a6abd4de422f3121b7a6db0c679b2233 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7e468a3fffde436d8b17e1bb264250ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_050638ebc686a75650dae04ae256f2f5 = $(`<div id="html_050638ebc686a75650dae04ae256f2f5" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">제주</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 청정 에너지 거점</p>         <hr style="margin:10px 0">         <b>풍력 100% + P2G</b><br>출력제한 문제 해결 위한 수소 전환         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 5.5 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 2,990 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -12.7%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_7e468a3fffde436d8b17e1bb264250ba.setContent(html_050638ebc686a75650dae04ae256f2f5);
+            
+        
+
+        marker_550762f07b7a9650e28bef0975f30f12.bindPopup(popup_7e468a3fffde436d8b17e1bb264250ba)
+        ;
+
+        
+    
+    
+            marker_550762f07b7a9650e28bef0975f30f12.bindTooltip(
+                `<div>
+                     제주 - 5.5 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_550762f07b7a9650e28bef0975f30f12.setIcon(icon_a6abd4de422f3121b7a6db0c679b2233);
+            
+    
+            var marker_a8cd2a2547f757f3819977b517a163cd = L.marker(
+                [37.8854, 127.7298],
+                {
+}
+            ).addTo(map_f197534b4a422056221975325531d4ef);
+        
+    
+            var icon_f810f1126bfeac3b9d64091c7a201e11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fc156851a787cafc44954023f1a73069 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3ca54fc329fd448c73409cf0f01beba5 = $(`<div id="html_3ca54fc329fd448c73409cf0f01beba5" style="width: 100.0%; height: 100.0%;">     <div style="width:300px">         <h4 style="margin:0 0 10px 0">강원</h4>         <p style="margin:5px 0"><b>전략 그룹:</b> 청정 에너지 거점</p>         <hr style="margin:10px 0">         <b>⚠️ 풍력 + 수상태양광 + 양수발전</b><br>관광 연계 청정 에너지 모델         <hr style="margin:10px 0">         <p style="margin:5px 0"><b>2026년 예측:</b> 13.0 TWh</p>         <p style="margin:5px 0"><b>ESS 권장:</b> 7,111 MWh</p>         <p style="margin:5px 0"><b>최근 추세:</b> -20.2%</p>         <p style="color:red;font-weight:bold">⚠️ 긴급 대응 필요</p>     </div>     </div>`)[0];
+                popup_fc156851a787cafc44954023f1a73069.setContent(html_3ca54fc329fd448c73409cf0f01beba5);
+            
+        
+
+        marker_a8cd2a2547f757f3819977b517a163cd.bindPopup(popup_fc156851a787cafc44954023f1a73069)
+        ;
+
+        
+    
+    
+            marker_a8cd2a2547f757f3819977b517a163cd.bindTooltip(
+                `<div>
+                     강원 - 13.0 TWh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a8cd2a2547f757f3819977b517a163cd.setIcon(icon_f810f1126bfeac3b9d64091c7a201e11);
+            
+</script>
+</html>
