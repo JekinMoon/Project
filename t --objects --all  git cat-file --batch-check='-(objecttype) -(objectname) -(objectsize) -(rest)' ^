@@ -1,0 +1,38 @@
+[33mcommit bca21606cceda6808f48e1afba50fe9ce9a56b39[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/add-map-features[m[33m)[m
+Author: BaekDongyun2 <bdy0010317@gmail.com>
+Date:   Sun Jan 4 22:49:12 2026 +0900
+
+    feat:상관관계 분석
+
+ project.ipynb | 1474662 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++[m[31m-[m
+ 1 file changed, 1474648 insertions(+), 14 deletions(-)
+
+[33mcommit 5fe585550a5467b98b818436121d4b97a042fd67[m
+Author: BaekDongyun2 <bdy0010317@gmail.com>
+Date:   Tue Dec 30 14:40:04 2025 +0900
+
+    feat: 태양광 발전량 및 이용률 히트맵 추가
+
+ project.ipynb | 24184 [32m++[m[31m------------------------------------------------------[m
+ 1 file changed, 473 insertions(+), 23711 deletions(-)
+
+[33mcommit 742cc1165dbcfd8ca0f62ac48fe05c9f2b2425bd[m
+Author: BaekDongyun2 <bdy0010317@gmail.com>
+Date:   Mon Dec 29 09:53:52 2025 +0900
+
+    Remove large files from git tracking
+
+ PV_Enery_Map.html  |   217 [31m-[m
+ PV_Enery_Map2.html | 21745 [31m---------------------------------------------------[m
+ 2 files changed, 21962 deletions(-)
+
+[33mcommit 0d097a83b9c8db8cd18a5c07b8739eb2a1669046[m
+Author: BaekDongyun2 <bdy0010317@gmail.com>
+Date:   Mon Dec 29 09:45:41 2025 +0900
+
+    feat: 전국 태양광 발전 이용률 및 발전시간 표 & 이를 기반으로 한 전국 히트맵 제작 시도
+
+ PV_Enery_Map.html  |  2098 [32m+[m[31m---[m
+ PV_Enery_Map2.html | 28586 [32m++++++++++++++[m[31m---------------------------------[m
+ project.ipynb      | 31054 [32m++++++++++++++++[m[31m-----------------------------------[m
+ 3 files changed, 18136 insertions(+), 43602 deletions(-)
